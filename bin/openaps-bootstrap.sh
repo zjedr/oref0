@@ -31,5 +31,5 @@ echo -ne "\nWifi SSID: "; iwgetid -r
 sleep 5
 # TODO check for options to fix the certificate activation error message for https
 # TODO: change back to dev after merging nodejs-8 to dev, then to master after release
-cd /tmp/; wget --no-check-certificate https://raw.githubusercontent.com/openaps/oref0/nodejs-8/bin/openaps-install.sh bash ./openaps-install.sh
+cd /tmp/; wget --no-check-certificate https://raw.githubusercontent.com/openaps/oref0/nodejs-8/bin/openaps-install.sh; bash ./openaps-install.sh
 )
