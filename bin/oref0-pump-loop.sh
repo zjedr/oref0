@@ -89,8 +89,8 @@ function smb_reservoir_before {
        fi \
     && (( $(bc <<< "$(date +%s -d $(cat monitor/clock-zoned.json | sed 's/"//g')) - $(date +%s)") > -60 )) \
     && (( $(bc <<< "$(date +%s -d $(cat monitor/clock-zoned.json | sed 's/"//g')) - $(date +%s)") < 60 )) \
-    && echo -n "and that pumphistory is less than 1m old.  " \
-    && (find monitor/ -mmin -1 -size +5c | grep -q pumphistory)
+    && echo -n "and that pumphistory is less than 2m old.  " \
+    && (find monitor/ -mmin -2 -size +5c | grep -q pumphistory)
 
 }
 
