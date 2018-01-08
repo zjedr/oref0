@@ -704,7 +704,13 @@ function glucose-fresh {
 }
 
 function refresh_pumphistory_24h {
-    sudo ~/src/EdisonVoltage/voltage json batteryVoltage battery > monitor/edison-battery.json 2>&3
+    if [ -e ~/src/EdisonVoltage/voltage ]; then
+        sudo ~/src/EdisonVoltage/voltage json batteryVoltage battery > monitor/edison-battery.json 2>&3
+    elif [ -e /root/src/openaps-menu/scripts/getvoltage.sh ]; then
+        sudo /root/src/openaps-menu/scripts/getvoltage.sh > monitor/edison-battery.json 2>&3
+    else
+        rm monitor/edison-battery.json 2>&3
+    fi
     if (! ls monitor/edison-battery.json 2>&3 >&4); then
         echo -n "Edison battery level not found. "
         autosens_freq=15
